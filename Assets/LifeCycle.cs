@@ -35,6 +35,11 @@ namespace DefaultNamespace
 
         private void Update()
         {
+            Vector2 target = new Vector2(5,0);
+            //등속운동
+            //매개변수 : 현재위치, 목표위치, 속도
+            transform.position = Vector2.MoveTowards(transform.position, target,0.1f);
+
             //게임 로직 업데이트
             // 주기적으로 돌아가는 로직을 수행하는곳
             // 환경에 따라서 실행주기가 떨어질수 있다.
@@ -43,12 +48,11 @@ namespace DefaultNamespace
             // {
             //     Debug.Log("키를 눌렀습니다.");
             // }
-            
-            
+
             //int number = 4; //스칼라 값
-            Vector3 vec = new Vector3(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical")); //벡터값
-            //Translate --> 벡터값을 현재위치에 더하는 함수 
-            transform.Translate(vec);
+            // Vector3 vec = new Vector3(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical")); //벡터값
+            // //Translate --> 벡터값을 현재위치에 더하는 함수 
+            // transform.Translate(vec);
 
             // if (Input.GetKeyDown(KeyCode.Return))
             // {

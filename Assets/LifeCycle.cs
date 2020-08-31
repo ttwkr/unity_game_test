@@ -48,7 +48,7 @@ namespace DefaultNamespace
             // {
             //     Debug.Log("키를 눌렀습니다.");
             // }
-
+            // 깃헙 테스트 
             //int number = 4; //스칼라 값
             // Vector3 vec = new Vector3(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical")); //벡터값
             // //Translate --> 벡터값을 현재위치에 더하는 함수 

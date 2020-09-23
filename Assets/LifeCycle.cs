@@ -1,5 +1,8 @@
 using System;
+using System.Numerics;
 using UnityEngine;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 namespace DefaultNamespace
 {
@@ -20,7 +23,6 @@ namespace DefaultNamespace
         private void Start()
         {
             Debug.Log("사냥할 준비가 됐습니다.");
-
         }
         //--------------------------------------------
         //        이 윗 부분이 초기화 하는 부분이라고 생각하면 된다
@@ -35,10 +37,26 @@ namespace DefaultNamespace
 
         private void Update()
         {
-            Vector2 target = new Vector2(5,0);
+            Vector2 target = new Vector2(5, 0);
             //등속운동
             //매개변수 : 현재위치, 목표위치, 속도
-            transform.position = Vector2.MoveTowards(transform.position, target,0.1f);
+            // transform.position = Vector2.MoveTowards(transform.position, target,0.1f);
+
+
+            // 스무스~ 하게 움직이기
+            // Vector2 velo = Vector2.zero;
+            // transform.position = Vector2.SmoothDamp(transform.position, target, ref velo, 0.2f);
+
+            // 러프 하게 움직이기
+            // transform.position = Vector2.Lerp(transform.position, target, 0.02f);
+
+            //-----------------------
+            // 위에 3개는 선형보간
+            //-----------------------
+
+
+            // 구면보간
+            // transform.position = Vector3.Slerp(transform.position, target, 0.1f);
 
             //게임 로직 업데이트
             // 주기적으로 돌아가는 로직을 수행하는곳
@@ -51,9 +69,10 @@ namespace DefaultNamespace
             // 깃헙 테스트 
             // 깃헙 테스트 두번째
             //int number = 4; //스칼라 값
-            // Vector3 vec = new Vector3(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical")); //벡터값
+            Vector3 vec = new Vector3(Input.GetAxis("Horizontal") * Time.deltaTime,
+                Input.GetAxis("Vertical") * Time.deltaTime); //벡터값
             // //Translate --> 벡터값을 현재위치에 더하는 함수 
-            // transform.Translate(vec);
+            transform.Translate(vec);
 
             // if (Input.GetKeyDown(KeyCode.Return))
             // {
